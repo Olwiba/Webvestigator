@@ -1,0 +1,137 @@
+html {
+    background-color: #021019;
+    background-size: 100%,auto;
+}
+
+table td {
+    width: 120px;
+    color: #fff;
+}
+
+.title {
+    font-family: 'Oswald',sans-serif;
+    width: 120px;
+    color: #15738B;
+}
+
+.note {
+    color: #0c4f63;
+}
+
+table {
+    margin-bottom: 0;
+}
+
+h1 {
+    font-family: 'Pacifico',cursive;
+    font-size: 5em;
+    color: #fff;
+}
+
+h2 {
+    font-family: 'Oswald',sans-serif;
+    font-size: 2.5em;
+    color: #15738B;
+}
+
+h3 {
+    font-family: 'Oswald',sans-serif;
+    font-size: 2.5em;
+    color: #15738B;
+}
+
+p {
+    font-family: 'Open Sans Condensed',sans-serif;
+    font-size: 1.5em;
+    color: #fff;
+}
+
+p strong {
+    color: #15738B;
+}
+
+.align-right {
+    text-align: right;
+}
+
+.align-left {
+    text-align: left;
+}
+
+.header {
+    display: block;
+}
+
+.mainHead {
+    position: fixed;
+    background-color: #08304B;
+    width: 100%;
+    height: 50px;
+    left: 0;
+    padding-top: 10px;
+    z-index: 100;
+}
+
+.intro {
+    padding-top: 65px;
+    visibility: visible;
+    text-align: center;
+    background-color: #021019;
+}
+
+input[type="text"],textarea {
+    background-color: #021019;
+    color: #15738B;
+}
+
+.content {
+    padding-top: 65px;
+}
+
+.shade {
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 5px;
+}
+
+.column,.columns {
+    margin: 0;
+}
+
+.logo {
+    height: 50px;
+}
+
+.headerinfo {
+    width: 100%;
+}
+
+.footer {
+    background-color: #20445d;
+    position: fixed;
+    width: 100%;
+    height: 50px;
+    left: 0;
+    bottom: 0;
+    padding-top: 10px;
+    z-index: 100;
+}
+
+#button {
+    background-image: url(../images/search.png);
+    background-color: rgba(2,16,25,1);
+    background-size: 34px;
+    background-repeat: no-repeat;
+    padding: 1px;
+    margin-left: 5px;
+    width: 38px;
+    height: 38px;
+}
+
+#googleMap {
+    width: 99%;
+    height: 700px;
+}
+
+#application {
+    visibility: hidden;
+}
