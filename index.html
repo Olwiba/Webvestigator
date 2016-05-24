@@ -1,156 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <!-- Basic Page Needs
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <meta charset="utf-8">
-    <title>Webvestigator</title>
-    <meta content=
-    "An online tool to find information about a domain's registration and location."
-    name="description">
-    <meta content="Ollie Bannister" name="author"><!-- Mobile Specific Metas
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <meta content="width=device-width, initial-scale=1" name="viewport">
-    <!-- FONT
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel=
-    'stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Oswald' rel=
-    'stylesheet' type='text/css'>
-    <link href=
-    'https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel=
-    'stylesheet' type='text/css'><!-- CSS
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <link href="resources/css/normalize.css" rel="stylesheet">
-    <link href="resources/css/skeleton.css" rel="stylesheet">
-    <link href="resources/css/style.css" rel="stylesheet"><!-- Favicon
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <link href="resources/images/favicon.png" rel="icon" type="image/png">
-</head>
-<body>
-    <!-- Primary Page Layout
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Dev Academy Blog</title>
+    <link rel="icon" href="images/favicon.ico" type="icon">
+      <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+      <!-- Style Sheets -->
+  	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+  </head>
+  <body>
+  <img src="images/Olwiba-logo-grey.png" alt="" id="olwibalogo">
+      <div class="row center" id="navigation">
+        <div class="one column"><a href="http://olwiba.github.io"><img src="images/home.png" alt="" id="homeimg"></a></div>
+        <div class="ten columns"><p> </p></div>
+        <div class="one colunm"><a href="#"> </a></div>
+      </div>
     <div class="container">
-        <div class="row mainHead">
-            <div class="three columns logo">
-                <a href="olwiba.github.io/webvestigator/index.html"><img alt=
-                "Webvestigator" class="logo" src=
-                "resources/images/webLogo.png"></a>
-            </div>
-            <div class="seven columns">
-                <input class="headerinfo" id="ipInput" name="domain"
-                placeholder="Enter Website or IP Address Here" type="text">
-            </div>
-            <div class="two columns">
-                <button class="headerinfo button" id="button"></button>
-            </div>
-        </div>
-        <div class="header">
-            <div class="row intro">
-                <div class="two columns">
-                    <br>
-                </div>
-                <div class="nine columns">
-                    <h1>Welcome to Webvestigator!</h1>
-                    <h2>This tool is easy!</h2>
-                    <h3 class="align-left">How to :</h3>
-                    <ul>
-                        <li>
-                            <p>1. Enter in Website domain or IP Address that
-                            you wish to lookup into the search bar.</p>
-                        </li>
-                        <li>
-                            <p>(If you dont have one in mind, leave it blank
-                            and it will search for you!)</p>
-                        </li>
-                        <li>
-                            <p>2. Press the search button.</p>
-                        </li>
-                        <li>
-                            <p>3. <strong>Browse</strong> all the information
-                            that could be gathered about the target.</p>
-                        </li>
-                    </ul>
-                    <h2 class="align-left">Note:</h2>
-                    <ul>
-                        <li>
-                            <p>- Location may not be exact.</p>
-                        </li>
-                        <li>
-                            <p>- Because of the API limitations only
-                            <strong>10,000</strong> calls may be made every
-                            hour.</p>
-                        </li>
-                    </ul>
-                </div>
-                <div class="two columns">
-                    <br>
-                </div>
-                <div class="twelve columns footer mainHead">
-                    <p>&#169; Olwiba | Check me out on <a href=
-                    "github.com/olwiba">Github</a>!</p>
-                </div>
-            </div>
-        </div>
-        <div class="content">
-            <div id="application">
-                <div class="shade">
-                    <div class="row">
-                        <div class="twelve columns">
-                            <table>
-                                <tr>
-                                    <td class="align-right title">URL:</td>
-                                    <td colspan="3" id="url"></td>
-                                    <td class="align-right title">IP
-                                    Address:</td>
-                                    <td id="ipAddr"></td>
-                                </tr>
-                                <tr>
-                                    <td class="align-right title">City:</td>
-                                    <td id="city"></td>
-                                    <td class="align-right title">Region:</td>
-                                    <td id="region"></td>
-                                    <td class="align-right title">Country:</td>
-                                    <td id="country"></td>
-                                </tr>
-                                <tr>
-                                    <td class="align-right title">Zip / Post
-                                    Code:</td>
-                                    <td id="zip"></td>
-                                    <td class="align-right title">Time
-                                    Zone:</td>
-                                    <td id="time_zone"></td>
-                                    <td class="align-right title">Country
-                                    Code:</td>
-                                    <td id="country_code"></td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="twelve columns note">
-                            The location may not be exact
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div id="googleMap"></div>
-                </div>
-                <div class="shade">
-                    <div class="row"></div>
-                </div>
-            </div>
+      <div class="row center">
+        <div class="twelve columns"><h1 class="heading">Welcome to my Site!!</h1></div>
+      </div>
+      <div class="row center">
+        <div class="twelve colunms"><p>What type of blog posts do you want to read?</p></div>
+      </div>
+      <div class="row center shade">
+          <ul id="categories" class="clr">
+            <li>
+                <div onclick="location.href='http://olwiba.github.io/blog/technical.html';" class="one-third column">
+                  <img src="images/code.png" alt=""/>
+                  <h1>Technical Blogs</h1>
+                  <p>Check out my technical blogs</p>
+              </div>
+            </li>
+            <li>
+                <div onclick="location.href='http://olwiba.github.io/blog/lib.html';" class="one-third column">
+                  <img src="images/library.png" alt=""/>
+                  <h1>View All</h1>
+                  <p>Check out all my posts!</p>
+              </div>
+            </li>
+              <li>
+                <div onclick="location.href='http://olwiba.github.io/blog/cultural.html';" class="one-third column">
+                  <img src="images/cultural.png" alt=""/>
+                  <h1>Cultural Blogs</h1>
+                  <p>Check out my cultural blogs</p>
+              </div>
+            </li>
+          </ul>
         </div>
     </div>
-    <script src=
-    "https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js">
-    </script> 
-    <script async charset="utf-8" defer src="resources/js/app.js" type=
-    "text/javascript">
-    </script> 
-    <script src=
-    "http://maps.googleapis.com/maps/api/js?key=AIzaSyDU9WBkZjTR0cYgx7YyfBawFrOdhArDizo">
-    </script> <!-- End Document
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-</body>
+      <div class="row center" id="footer">
+        <div class="twelve columns"><h6>Designed by <a href="mailto:Olwiba@gmail.com?subject=Contact Olwiba!" "email me">Olwiba</a> | © Copyright 2015</h6></div>
+      </div>
+  </body>
 </html>
