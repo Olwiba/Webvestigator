@@ -16,6 +16,8 @@ table td {
 
 .note {
     color: #0c4f63;
+    font-family: 'Oswald',sans-serif;
+    font-size: 1.3em;
 }
 
 table {
@@ -58,7 +60,7 @@ p strong {
     text-align: left;
 }
 
-.header {
+.introd {
     display: block;
 }
 
@@ -84,8 +86,23 @@ input[type="text"],textarea {
     color: #15738B;
 }
 
+label {
+  color: #15738B;
+  padding-left: 1px;
+  padding-right: 1px;
+}
+
+#clearHistory {
+	float: right;
+}
+
+.filename {
+  margin: 5px;
+}
+
 .content {
     padding-top: 65px;
+    display: none;
 }
 
 .shade {
@@ -99,6 +116,29 @@ input[type="text"],textarea {
 
 .logo {
     height: 50px;
+    background-image: url("../images/webLogo.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.flags {
+    position: fixed;
+    width: 100%;
+    height: 117px;
+    left: 0;
+	bottom:0;
+    z-index: 100;
+}
+
+
+#flag {
+	display: block;
+	margin: auto;
+}
+
+.no-padding {
+	padding: 0;
 }
 
 .headerinfo {
@@ -134,4 +174,74 @@ input[type="text"],textarea {
 
 #application {
     visibility: hidden;
+}
+
+@media screen and (max-width: 1022px){
+.logo {
+  background-image: url("../images/webLogo-small.png");
+}
+
+h1{
+  font-size: 2.5em;
+}
+
+h2 {
+    font-size: 1.5em;
+}
+
+h3 {
+    font-size: 1.5em;
+}
+
+.container {
+  margin: 0px;
+  width: 100%;
+}
+
+#googleMap {
+    width: 99%;
+    height: 550px;
+}
+
+}
+
+@media screen and (max-width: 555px){
+
+
+  .intro {
+    padding-top: 155px;
+  }
+
+  .content {
+    padding-top: 155px;
+  }
+  #button {
+    width: 100%;
+    background-position: center;
+    margin-left: 0px
+  }
+
+  .headerinfo {
+    margin-bottom: 0px;
+  }
+
+  .shade {
+    width: 100%;
+  }
+
+  #googleMap {
+      width: 99%;
+      height: 420px;
+  }
+
+}
+
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 480px) {
+
+  #googleMap {
+      width: 99%;
+      height: 220px;
+  }
 }

@@ -1,37 +1,70 @@
 $(document).ready(function() {
-    // _______________ Listener for button _______________
-    $("#button").on('click', function() {
-        console.log("Button has been clicked!");
-        var ipInput = $("#ipInput").val();
-        console.log(ipInput);
+	// _______________ Automatically focus on input field _______________
+	$("#userInput").focus();
+	// _______________ Store variables in cache _______________
+	var url;
+	var ip;
+	var city;
+	var region;
+	var country;
+	var zip;
+	var time_zone;
+	var country_code;
+
+	// _______________ Search function _______________
+	function search() {
+		// _______________ Store user input and remove protocol _______________
+	    var userInput = $("#userInput").val();
+			userInput = userInput.replace("http://", "");
+			userInput = userInput.replace("https://", "");
+			userInput = userInput.replace("/", "");
+
         // _______________ API call for information _______________
         $.ajax({
             type: "GET",
             dataType: 'jsonp',
-            url: "http://freegeoip.net/json/" + ipInput,
+            url: "http://freegeoip.net/json/" + userInput,
+			// _______________ On successful call _______________
             success: function(whoIs) {
-                console.log(whoIs);
-                // _______________ On succsesfull call update page _______________
+				// _______________ Store results in variables _______________
+				url = userInput;
+				ip = whoIs.ip;
+				city = whoIs.city;
+				region = whoIs.region_name;
+				country = whoIs.country_name;
+				zip = whoIs.zip_code;
+				time_zone = whoIs.time_zone;
+				country_code = whoIs.country_code;
+				// _______________ Update page elements _______________
+								$(".content").css("display", "block");
                 $("#application").css("visibility",
                     "visible");
                 $(".intro").css("visibility",
                     "hidden");
-                $(".header").css("display", "none");
-                if (ipInput === "" || ipInput ===
-                    " ") {
-                    $("#url").html(
-                        "Personal Computer");
-                } else {
-                    $("#url").html(ipInput);
+                $(".introd").css("display", "none");
+				// _______________ Update Flag _______________
+				var flag = document.getElementById('flag');
+				var mapName = whoIs.country_name;
+				mapName = mapName.replace(" ", "_");
+				mapName = mapName + ".png";
+				flag.src="resources/images/flags/" + mapName;
+				console.log(mapName);
+
+				// _______________ Apply information to page _______________
+                if (url === "" || url ===" ") {
+                    url = "Personal Computer";
                 }
-                $("#ipAddr").html(whoIs.ip);
-                $("#city").html(whoIs.city);
-                $("#region").html(whoIs.region_name);
-                $("#country").html(whoIs.country_name);
-                $("#zip").html(whoIs.zip_code);
-                $("#time_zone").html(whoIs.time_zone);
-                $("#country_code").html(whoIs.country_code);
-                // _______________ Map properties _______________
+                $("#url").html(url);
+                $("#ipAddr").html(ip);
+                $("#city").html(city);
+                $("#region").html(region);
+                $("#country").html(country);
+                $("#zip").html(zip);
+                $("#time_zone").html(time_zone);
+                $("#country_code").html(country_code);
+				
+				addHistory();
+                // _______________ Set map properties _______________
                 var mapPos = {
                     lat: whoIs.latitude,
                     lng: whoIs.longitude
@@ -42,12 +75,13 @@ $(document).ready(function() {
                     mapTypeId: google.maps.MapTypeId
                         .ROADMAP
                 };
-                // _______________ Initializing map in background _______________
+                // _______________ Initialize map function _______________
                 function initialize() {
                     var map = new google.maps.Map(
                         document.getElementById(
                             "googleMap"),
                         mapProp);
+					// _______________ Map styles _______________
                     var mapStyle = [{
                         "featureType": "all",
                         "elementType": "labels.text.fill",
@@ -152,6 +186,64 @@ $(document).ready(function() {
                 }
                 initialize();
             }
-        })
+        })}
+	// _______________ History function _______________
+	function addHistory() {
+    // Parse the JSON stored in allEntriesP
+    var existingEntries = JSON.parse(localStorage.getItem("allEntries"));
+    if(existingEntries == null) existingEntries = [];
+	console.log(url);
+    var entry = "<a>" + url + "</a>" + "<br/>";
+    localStorage.setItem("entry", JSON.stringify(entry));
+    // Save allEntries back to local storage
+    existingEntries.push(entry);
+	$(".history").html("");
+	for ( i = 0 ; i < existingEntries.length; i++) {
+		console.log(existingEntries[i]);
+		var formattedEntry = "<a>" + existingEntries[i] + "</a>" + "<br/>";
+		$(".history").append(formattedEntry);
+	}
+	
+    localStorage.setItem("allEntries", JSON.stringify(existingEntries));
+	
+
+		};
+	// _______________ Clear history _______________
+	$("#clearHistory").on('click', function() {
+		localStorage.clear();
+		$(".history").html("");
+	})
+
+	// _______________ Listener for Key Press _______________
+	window.onkeyup = function(k) {
+	var key = k.keyCode ? k.keyCode : k.which;
+	   if (key == 13) {
+		   console.log("enter was pressed");
+		   search();
+	   }
+	}
+    // _______________ Listener for search button _______________
+    $("#button").on('click', function() {
+        console.log("Button has been clicked!");
+		search();
     })
+
+	// _______________ Listener for save button _______________
+	$("#save-button").on('click', function() {
+		console.log("Saving file...");
+		var saveName = $("#saveName").val() + ".txt";
+		// _______________ Info for .txt file _______________
+		var blob = new Blob([
+			"URL: " + url + "\u000D\u000A" +
+			"IP Address: " + ip + "\u000D\u000A" +
+			"City: " + city + "\u000D\u000A" +
+			"Region: " + region + "\u000D\u000A" +
+			"Country: " + country + "\u000D\u000A" +
+			"ZIP Code: " + zip + "\u000D\u000A" +
+			"Time Zone: " + time_zone + "\u000D\u000A" +
+			"Country Code: " + country_code + "\u000D\u000A"
+			], {type: "text/plain;charset=utf-8"});
+		// _______________ Save .txt document _______________
+		saveAs(blob, saveName);
+	})
 })
