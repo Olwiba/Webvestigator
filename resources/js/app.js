@@ -189,24 +189,20 @@ $(document).ready(function() {
         })}
 	// _______________ History function _______________
 	function addHistory() {
-    // Parse the JSON stored in allEntriesP
-    var existingEntries = JSON.parse(localStorage.getItem("allEntries"));
-    if(existingEntries == null) existingEntries = [];
-	console.log(url);
-    var entry = "<a>" + url + "</a>" + "<br/>";
-    localStorage.setItem("entry", JSON.stringify(entry));
-    // Save allEntries back to local storage
-    existingEntries.push(entry);
-	$(".history").html("");
-	for ( i = 0 ; i < existingEntries.length; i++) {
-		console.log(existingEntries[i]);
-		var formattedEntry = "<a>" + existingEntries[i] + "</a>" + "<br/>";
-		$(".history").append(formattedEntry);
-	}
-	
-    localStorage.setItem("allEntries", JSON.stringify(existingEntries));
-	
-
+		var existingEntries = JSON.parse(localStorage.getItem("allEntries"));
+		if(existingEntries == null) existingEntries = [];
+		var entry = "<a>" + url + "</a>" + "<br/>";
+		localStorage.setItem("entry", JSON.stringify(entry));
+		// _______________ Add entry & update history list _______________
+		existingEntries.push(entry);
+		$(".history").html("");
+		for ( i = 0 ; i < existingEntries.length; i++) {
+			console.log(existingEntries[i]);
+			var formattedEntry = "<p>" + existingEntries[i] + "</p>" + "<br/>";
+			$(".history").append(formattedEntry);
+		}
+		// _______________ Save history  _______________
+		localStorage.setItem("allEntries", JSON.stringify(existingEntries));
 		};
 	// _______________ Clear history _______________
 	$("#clearHistory").on('click', function() {

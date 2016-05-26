@@ -1,3 +1,4 @@
+/* ___________________  Page element styles ___________________ */
 html {
     background-color: #021019;
     background-size: 100%,auto;
@@ -8,22 +9,35 @@ table td {
     color: #fff;
 }
 
-.title {
-    font-family: 'Oswald',sans-serif;
-    width: 120px;
-    color: #15738B;
-}
-
-.note {
-    color: #0c4f63;
-    font-family: 'Oswald',sans-serif;
-    font-size: 1.3em;
-}
-
 table {
     margin-bottom: 0;
 }
 
+input[type="text"],textarea {
+    background-color: #021019;
+    color: #15738B;
+}
+
+label {
+  color: #15738B;
+  padding-left: 1px;
+  padding-right: 1px;
+}
+
+.shade {
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 5px;
+}
+
+.column, .columns {
+    margin: 0;
+}
+
+.no-padding {
+	padding: 0;
+}
+
+/* ___________________  Texts / Fonts ___________________ */
 h1 {
     font-family: 'Pacifico',cursive;
     font-size: 5em;
@@ -52,6 +66,19 @@ p strong {
     color: #15738B;
 }
 
+.title {
+    font-family: 'Oswald',sans-serif;
+    width: 120px;
+    color: #15738B;
+}
+
+.note {
+    color: #0c4f63;
+    font-family: 'Oswald',sans-serif;
+    font-size: 1.3em;
+}
+
+/* ___________________  Text alignment  ___________________ */
 .align-right {
     text-align: right;
 }
@@ -60,10 +87,7 @@ p strong {
     text-align: left;
 }
 
-.introd {
-    display: block;
-}
-
+/* ___________________  Header ___________________ */
 .mainHead {
     position: fixed;
     background-color: #08304B;
@@ -74,46 +98,6 @@ p strong {
     z-index: 100;
 }
 
-.intro {
-    padding-top: 65px;
-    visibility: visible;
-    text-align: center;
-    background-color: #021019;
-}
-
-input[type="text"],textarea {
-    background-color: #021019;
-    color: #15738B;
-}
-
-label {
-  color: #15738B;
-  padding-left: 1px;
-  padding-right: 1px;
-}
-
-#clearHistory {
-	float: right;
-}
-
-.filename {
-  margin: 5px;
-}
-
-.content {
-    padding-top: 65px;
-    display: none;
-}
-
-.shade {
-    background-color: rgba(0,0,0,0.5);
-    border-radius: 5px;
-}
-
-.column,.columns {
-    margin: 0;
-}
-
 .logo {
     height: 50px;
     background-image: url("../images/webLogo.png");
@@ -122,38 +106,8 @@ label {
     background-position: center;
 }
 
-.flags {
-    position: fixed;
-    width: 100%;
-    height: 117px;
-    left: 0;
-	bottom:0;
-    z-index: 100;
-}
-
-
-#flag {
-	display: block;
-	margin: auto;
-}
-
-.no-padding {
-	padding: 0;
-}
-
 .headerinfo {
     width: 100%;
-}
-
-.footer {
-    background-color: #20445d;
-    position: fixed;
-    width: 100%;
-    height: 50px;
-    left: 0;
-    bottom: 0;
-    padding-top: 10px;
-    z-index: 100;
 }
 
 #button {
@@ -166,16 +120,93 @@ label {
     width: 38px;
     height: 38px;
 }
+/* ___________________  Footer ___________________ */
+.footer {
+    background-color: #20445d;
+    position: fixed;
+    width: 100%;
+    height: 50px;
+    left: 0;
+    bottom: 0;
+    padding-top: 10px;
+    z-index: 100;
+}
+/* ___________________  Intro ___________________ */
+.introd {
+    display: block;
+}
 
-#googleMap {
-    width: 99%;
-    height: 700px;
+.intro {
+    padding-top: 65px;
+    visibility: visible;
+    text-align: center;
+    background-color: #021019;
+}
+
+/* ___________________  App data  ___________________ */
+.content {
+    padding-top: 65px;
+    display: none;
+}
+
+.flags {
+    position: fixed;
+    width: 100%;
+    height: 117px;
+    left: 0;
+	bottom:0;
+    z-index: 100;
+}
+
+#flag {
+	display: block;
+	margin: auto;
 }
 
 #application {
     visibility: hidden;
 }
+/* ___________________  Save data  ___________________ */
+.filename {
+  margin: 5px;
+}
 
+#save-button {
+	background-image: url(../images/save.png);
+	background-size: 24px;
+	background-position: center;
+	background-color: rgba(2,16,25,1);
+	background-repeat: no-repeat;
+	margin: 5px;
+	padding: 1px;
+	width: 38px;
+    height: 38px;
+}
+/* ___________________  Google maps  ___________________ */
+#googleMap {
+    width: 99%;
+    height: 700px;
+}
+/* ___________________  App history  ___________________ */
+.history {
+	text-align: center;
+}
+
+.historyTitle {
+	padding-left: 10px;
+	top: 0;
+}
+
+.historyContent {
+	padding-top: 10px;
+}
+
+#clearHistory {
+	float: right;
+	color: #15738B;
+}
+
+/* ___________________  Styling for smaller screens & mobile ___________________ */
 @media screen and (max-width: 1022px){
 .logo {
   background-image: url("../images/webLogo-small.png");
@@ -236,9 +267,7 @@ h3 {
 
 }
 
-@media only screen
-and (min-device-width : 320px)
-and (max-device-width : 480px) {
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
 
   #googleMap {
       width: 99%;
