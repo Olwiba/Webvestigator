@@ -62,7 +62,7 @@ $(document).ready(function() {
                 $("#zip").html(zip);
                 $("#time_zone").html(time_zone);
                 $("#country_code").html(country_code);
-				
+
 				addHistory();
                 // _______________ Set map properties _______________
                 var mapPos = {
@@ -198,8 +198,8 @@ $(document).ready(function() {
 		$(".history").html("");
 		for ( i = 0 ; i < existingEntries.length; i++) {
 			console.log(existingEntries[i]);
-			var formattedEntry = "<p>" + existingEntries[i] + "</p>" + "<br/>";
-			$(".history").append(formattedEntry);
+			var formattedEntry = "<p>"+ "Search " + (i + 1) + " : " + existingEntries[i] + "</p>" + "<br/>";
+			$(".history").prepend(formattedEntry);
 		}
 		// _______________ Save history  _______________
 		localStorage.setItem("allEntries", JSON.stringify(existingEntries));
